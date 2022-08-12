@@ -22,7 +22,8 @@
         </nav>
 
         <div class="flex items-center h-full ml-auto">
-          <ActionButton />
+          <ProfileImage v-if="isLoggedIn" />
+          <ActionButton @click="toggleProfileImage" v-else />
         </div>
       </div>
     </div>
@@ -32,8 +33,10 @@
 <script setup>
 import { ref } from "vue";
 import ActionButton from "@/components/ui/ActionButton.vue";
+import ProfileImage from "@/components/ui/ProfileImage.vue";
 
 const company = ref("Talga Careers");
+const isLoggedIn = ref(false);
 const menuItems = ref([
   "Teams",
   "Locations",
@@ -42,4 +45,8 @@ const menuItems = ref([
   "Students",
   "Careers",
 ]);
+
+const toggleProfileImage = () => {
+  isLoggedIn.value = !isLoggedIn.value;
+};
 </script>

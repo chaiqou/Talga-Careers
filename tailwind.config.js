@@ -14,6 +14,9 @@ module.exports = {
         "talga-green-1": "#137333",
         "talga-blue-1": "#1967d2",
       },
+      boxShadow: {
+        "talga-shadow-1": "0px 0px 3px 3px #4285f4",
+      },
     },
   },
   plugins: [],

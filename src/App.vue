@@ -4,5 +4,5 @@
 </template>
 
 <script setup>
-import MainNav from "@/components/ui/MainNav.vue";
+import MainNav from "@/components/MainNav.vue";
 </script>

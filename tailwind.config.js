@@ -13,6 +13,7 @@ module.exports = {
         "talga-gray-1": "#dadce0",
         "talga-green-1": "#137333",
         "talga-blue-1": "#1967d2",
+        "talga-blue-2": "#4285f4",
       },
       boxShadow: {
         "talga-shadow-1": "0px 0px 3px 3px #4285f4",

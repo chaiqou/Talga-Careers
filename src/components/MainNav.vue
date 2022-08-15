@@ -23,7 +23,7 @@
 
         <div class="flex items-center h-full ml-auto">
           <ProfileImage v-if="isLoggedIn" />
-          <ActionButton @click="toggleProfileImage" v-else />
+          <ActionButton type="primary" @click="toggleProfileImage" v-else />
         </div>
       </div>
     </div>

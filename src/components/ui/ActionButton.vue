@@ -1,10 +1,26 @@
 <template>
   <div>
-    <button class="primary">Sign In</button>
+    <button :class="buttonClass">Sign In</button>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from "vue";
+
+const props = defineProps({
+  type: {
+    type: String,
+    default: "primary",
+  },
+});
+
+const buttonClass = computed(() => {
+  return {
+    primary: props.type === "primary",
+    secondary: props.type === "secondary",
+  };
+});
+</script>
 
 <style scoped>
 button {
@@ -16,5 +32,6 @@ button {
 }
 
 .secondary {
+  @apply text-talga-blue-1 bg-transparent hover:bg-talga-blue-2 hover:text-white;
 }
 </style>

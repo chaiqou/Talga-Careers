@@ -26,6 +26,7 @@
           <ActionButton type="primary" @click="toggleProfileImage" v-else />
         </div>
       </div>
+      <SubNav />
     </div>
   </header>
 </template>
@@ -34,6 +35,7 @@
 import { ref } from "vue";
 import ActionButton from "@/components/ui/ActionButton.vue";
 import ProfileImage from "@/components/ui/ProfileImage.vue";
+import SubNav from "@/components/SubNav.vue";
 
 const company = ref("Talga Careers");
 const isLoggedIn = ref(false);

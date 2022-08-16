@@ -16,8 +16,7 @@ const props = defineProps({
 
 const buttonClass = computed(() => {
   return {
-    primary: props.type === "primary",
-    secondary: props.type === "secondary",
+    [props.type]: true,
   };
 });
 </script>

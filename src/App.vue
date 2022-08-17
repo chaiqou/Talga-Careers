@@ -1,8 +1,11 @@
 <template>
-  <MainNav />
-  <div class="text-red-400">Hello Vue</div>
+  <div>
+    <MainNav />
+    <Hero />
+  </div>
 </template>
 
 <script setup>
 import MainNav from "@/components/MainNav.vue";
+import Hero from "@/components/Hero.vue";
 </script>

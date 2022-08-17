@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full text-sm">
+  <header :class="headerHeightClass" class="w-full text-sm">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div
         class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-talga-gray-1"
@@ -26,13 +26,13 @@
           <ActionButton type="primary" @click="toggleProfileImage" v-else />
         </div>
       </div>
-      <SubNav />
+      <SubNav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import ActionButton from "@/components/ui/ActionButton.vue";
 import ProfileImage from "@/components/ui/ProfileImage.vue";
 import SubNav from "@/components/SubNav.vue";
@@ -47,6 +47,10 @@ const menuItems = ref([
   "Students",
   "Careers",
 ]);
+
+const headerHeightClass = computed(function () {
+  return isLoggedIn.value ? "h-32" : "h-16";
+});
 
 const toggleProfileImage = () => {
   isLoggedIn.value = !isLoggedIn.value;

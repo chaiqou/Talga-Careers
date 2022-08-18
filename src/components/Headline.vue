@@ -9,6 +9,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from "vue";
+import nextElementInArrayList from "@/helpers/nextElementInArrayList";
 const action = ref("Build");
 const interval = ref(null);
 
@@ -32,9 +33,7 @@ const actionClasses = computed(() => {
 const changeTitle = () => {
   interval.value = setInterval(() => {
     const actions = ["Build", "Design", "Develop", "Code"];
-    const currentActionIndex = actions.indexOf(action.value);
-    const nextActionIndex = (currentActionIndex + 1) % actions.length;
-    const nextAction = actions[nextActionIndex];
+    const nextAction = nextElementInArrayList(actions, action.value);
     action.value = nextAction;
   }, 3000);
 };

@@ -1,10 +1,10 @@
 <template>
-  <h1>
+  <h1 class="font-bold tracking-tighter text-8xl mb-14">
     <span :class="actionClasses">{{ action }}</span>
     <br />
     for everyone
   </h1>
-  <h2>Find your next job at Talga</h2>
+  <h2 class="text-3xl font-light">Find your next job at Talga.</h2>
 </template>
 
 <script setup>

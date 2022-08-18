@@ -5,7 +5,9 @@
         <div class="col-start-1 col-span-1 border border-blue-700">
           1 column
         </div>
-        <div class="col-start-2 col-span-5 border border-red-500">5 column</div>
+        <div class="col-start-2 col-span-5 border border-red-500">
+          <Headline />
+        </div>
         <div class="col-start-7 col-span-5 border border-green-500">
           5 column
         </div>
@@ -17,6 +19,8 @@
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import Headline from "./Headline.vue";
+</script>
 
 <style lang="scss" scoped></style>

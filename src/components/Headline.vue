@@ -13,16 +13,16 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  clearInterval(interval);
+  clearInterval(interval.value);
 });
 
 const changeTitle = () => {
-  setInterval(() => {
+  interval.value = setInterval(() => {
     const actions = ["Build", "Design", "Develop", "Code"];
     const currentActionIndex = actions.indexOf(action.value);
     const nextActionIndex = (currentActionIndex + 1) % actions.length;
     const nextAction = actions[nextActionIndex];
     action.value = nextAction;
-  }, 1000);
+  }, 3000);
 };
 </script>

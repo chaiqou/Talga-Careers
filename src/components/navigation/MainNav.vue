@@ -34,8 +34,8 @@
 <script setup>
 import { ref, computed } from "vue";
 import ActionButton from "@/components/ui/ActionButton.vue";
-import ProfileImage from "@/components/ui/ProfileImage.vue";
-import SubNav from "@/components/SubNav.vue";
+import ProfileImage from "@/components/navigation/ProfileImage.vue";
+import SubNav from "@/components/navigation/SubNav.vue";
 
 const company = ref("Talga Careers");
 const isLoggedIn = ref(false);

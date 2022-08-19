@@ -10,6 +10,7 @@
         <label class="absolute left-0 -top-10" for="">Role</label>
         <input
           type="text"
+          v-model="role"
           placeholder="Software engineer"
           class="w-full text-lg font-normal focus:outline-none"
         />
@@ -22,6 +23,7 @@
         <label class="absolute left-0 -top-10" for="">Where?</label>
         <input
           type="text"
+          v-model="location"
           placeholder="Kutaisi"
           class="w-full text-lg font-normal focus:outline-none"
         />
@@ -33,7 +35,11 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
 import ActionButton from "./ui/ActionButton.vue";
+
+const role = ref("");
+const location = ref("");
 </script>
 
 <style lang="scss" scoped></style>

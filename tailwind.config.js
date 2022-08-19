@@ -11,6 +11,8 @@ module.exports = {
       },
       colors: {
         "talga-gray-1": "#dadce0",
+        "talga-gray-2": "#f8f9fa",
+        "talga-gray-3": "$80868b",
         "talga-green-1": "#137333",
         "talga-blue-1": "#1967d2",
         "talga-blue-2": "#4285f4",

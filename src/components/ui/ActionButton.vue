@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button :class="buttonClass">Sign In</button>
+    <button :class="buttonClass">{{ text }}</button>
   </div>
 </template>
 
@@ -11,6 +11,10 @@ const props = defineProps({
   type: {
     type: String,
     default: "primary",
+  },
+  text: {
+    type: String,
+    default: "Sign in",
   },
 });
 
@@ -23,11 +27,11 @@ const buttonClass = computed(() => {
 
 <style scoped>
 button {
-  @apply px-5 py-3 rounded font-medium;
+  @apply px-5 py-3 font-medium;
 }
 
 .primary {
-  @apply text-white bg-talga-blue-1 hover:shadow-talga-shadow-1;
+  @apply text-white bg-talga-blue-1 rounded hover:shadow-talga-shadow-1;
 }
 
 .secondary {

@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref, defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   placeholder: {
@@ -23,9 +23,17 @@ const props = defineProps({
   },
 });
 
+const emits = defineEmits({
+  onHandleInput: {
+    type: String,
+    default: "",
+  },
+});
+
 const value = ref("");
 
 const onHandleInput = (event) => {
   value.value = event.target.value;
+  emits("onHandleInput", value.value);
 };
 </script>

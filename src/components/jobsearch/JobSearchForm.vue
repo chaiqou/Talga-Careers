@@ -10,7 +10,7 @@
         <BaseInput
           placeholder="Software engineer"
           label="Role"
-          @onHandleInput="updateRole"
+          v-model="role"
         />
       </div>
       <span
@@ -18,11 +18,7 @@
         >in</span
       >
       <div class="relative flex items-center flex-1 h-full pl-3">
-        <BaseInput
-          placeholder="Kutaisi"
-          label="Where?"
-          @onHandleInput="updateLocation"
-        />
+        <BaseInput placeholder="Kutaisi" label="Where?" v-model="location" />
       </div>
     </div>
 
@@ -37,14 +33,6 @@ import BaseInput from "@/components/ui/BaseInput.vue";
 
 const role = ref("");
 const location = ref("");
-
-const updateRole = (value) => {
-  role.value = value;
-};
-
-const updateLocation = (value) => {
-  location.value = value;
-};
 </script>
 
 <style lang="scss" scoped></style>

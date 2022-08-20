@@ -1,7 +1,7 @@
 <template>
   <label class="absolute left-0 -top-10">{{ label }}</label>
   <input
-    :value="value"
+    :value="modelValue"
     @input="onHandleInput"
     type="text"
     :placeholder="props.placeholder"
@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   placeholder: {
@@ -21,6 +21,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  modelValue: {
+    type: String,
+    required: true,
+  },
 });
 
 const emits = defineEmits({
@@ -30,10 +34,7 @@ const emits = defineEmits({
   },
 });
 
-const value = ref("");
-
 const onHandleInput = (event) => {
-  value.value = event.target.value;
-  emits("onHandleInput", value.value);
+  emits("update:modelValue", event.target.value);
 };
 </script>

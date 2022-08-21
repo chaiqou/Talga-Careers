@@ -1,11 +1,10 @@
 <template>
   <div>
     <MainNav />
-    <Hero />
+    <router-view />
   </div>
 </template>
 
 <script setup>
 import MainNav from "@/components/navigation/MainNav.vue";
-import Hero from "@/components/jobsearch/Hero.vue";
 </script>

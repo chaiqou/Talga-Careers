@@ -1,7 +1,7 @@
 <template>
-  <div>Home View</div>
+  <Hero />
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<script setup>
+import Hero from "@/components/jobsearch/Hero.vue";
+</script>

@@ -6,7 +6,7 @@
       >
         <router-link
           class="flex items-center h-full text-xl font-bold"
-          :to="{ name: 'main-page' }"
+          :to="{ name: 'home-page' }"
           >{{ company }}</router-link
         >
         <nav class="h-full ml-12">

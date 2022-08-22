@@ -13,10 +13,14 @@
           <ul class="flex p-0 m-0 h-full list-none">
             <li
               v-for="item in menuItems"
-              v-bind:key="item"
+              v-bind:key="item.text"
               class="h-full first:ml-0 ml-9"
             >
-              <a href="" class="flex items-center py-2.5 h-full">{{ item }}</a>
+              <router-link
+                :to="item.url"
+                class="flex items-center py-2.5 h-full"
+                >{{ item.text }}</router-link
+              >
             </li>
           </ul>
         </nav>
@@ -40,12 +44,12 @@ import SubNav from "@/components/navigation/SubNav.vue";
 const company = ref("Talga Careers");
 const isLoggedIn = ref(false);
 const menuItems = ref([
-  "Teams",
-  "Locations",
-  "Life at Talga",
-  "How we hire",
-  "Students",
-  "Careers",
+  { text: "Teams", url: "/teams" },
+  { text: "Locations", url: "/locations" },
+  { text: "Life at Talga", url: "/life" },
+  { text: "How we hire", url: "/hire" },
+  { text: "Students", url: "/students" },
+  { text: "Careers", url: "/job-results" },
 ]);
 
 const headerHeightClass = computed(function () {

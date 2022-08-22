@@ -1,7 +1,7 @@
 <template>
   <form
     class="flex items-center w-full h-12 mt-14 border border-solid border-talga-gray-3 rounded-3xl"
-    action=""
+    @submit.prevent="searchForJob"
   >
     <font-awesome-icon :icon="['fas', 'search']" class="ml-4 mr-3" />
 
@@ -28,11 +28,23 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import ActionButton from "@/components/ui/ActionButton.vue";
 import BaseInput from "@/components/ui/BaseInput.vue";
+const router = useRouter();
 
 const role = ref("");
 const location = ref("");
+
+const searchForJob = () => {
+  router.push({
+    name: "job-results-page",
+    query: {
+      role: role.value,
+      location: location.value,
+    },
+  });
+};
 </script>
 
 <style lang="scss" scoped></style>

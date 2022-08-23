@@ -1,7 +1,11 @@
 <template>
-  <div>Job Result View</div>
+  <div class="flex flex-row flex-nowrap w-full">
+    <JobFiltersSidebar />
+    <JobListings />
+  </div>
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<script setup>
+import JobFiltersSidebar from "@/components/jobresults/JobFiltersSidebar.vue";
+import JobListings from "@/components/jobresults/JobListings.vue";
+</script>

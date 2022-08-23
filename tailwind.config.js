@@ -19,6 +19,7 @@ module.exports = {
       },
       boxShadow: {
         "talga-shadow-1": "0px 0px 3px 3px #4285f4",
+        "talga-shadow-gray": "0 1px 3px 0 rgba(60,64,67,0.3)",
       },
     },
   },

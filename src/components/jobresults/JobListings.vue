@@ -14,8 +14,11 @@ import axiosInstance from "@/config/axios";
 const jobs = ref([]);
 
 onMounted(() => {
-  axiosInstance.get("api/posts").then((response) => {
-    console.log(response);
-  });
+  fetchJobs();
 });
+
+const fetchJobs = async () => {
+  const response = await axiosInstance.get("api/posts");
+  jobs.value = response.data.data;
+};
 </script>

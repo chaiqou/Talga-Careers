@@ -1,7 +1,7 @@
 <template>
   <div class="flex-auto p-8 bg-talga-gray-2">
     <ol>
-      <JobListing />
+      <JobListing v-for="job in jobs" :key="job.id" :job="job" />
     </ol>
   </div>
 </template>
@@ -18,7 +18,7 @@ onMounted(() => {
 });
 
 const fetchJobs = async () => {
-  const response = await axiosInstance.get("api/posts");
+  const response = await axiosInstance.get("api/jobs");
   jobs.value = response.data.data;
 };
 </script>

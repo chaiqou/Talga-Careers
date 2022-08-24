@@ -1,18 +1,18 @@
 <template>
   <li class="mb-7">
     <router-link
-      to="/job-results/1"
+      :to="jobUrl"
       class="block mx-auto bg-white border border-solid border-talga-gray-2 rounded-xl hover:shadow-xl hover:shadow-gray-200"
     >
       <div class="pt-5 pb-2 mx-8 border-b border-solid border-talga-gray-2">
-        <h2 class="mb-2 text-2xl">Software Engineer</h2>
+        <h2 class="mb-2 text-2xl">{{ job.title }}</h2>
 
         <div class="flex flex-row align-middle">
           <div class="mr-5">
-            <span>Talga</span>
+            <span>{{ job.company }} ,</span>
           </div>
           <div>
-            <span>Georgia</span>
+            <span>{{ job.city }}</span>
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
           <h3 class="mt-1 mb-2">Qualifications:</h3>
           <div>
             <ul class="pl-8 list-disc">
-              <li>Bachelors degree</li>
+              <li>{{ job.requirements }}</li>
               <li>6+ experience in programming</li>
               <li>Laravel Vue experience</li>
             </ul>
@@ -31,3 +31,18 @@
     </router-link>
   </li>
 </template>
+
+<script setup>
+import { defineProps, computed } from "vue";
+
+const props = defineProps({
+  job: {
+    type: Object,
+    required: true,
+  },
+});
+
+const jobUrl = computed(() => {
+  return `job-results/${props.job.id}`;
+});
+</script>

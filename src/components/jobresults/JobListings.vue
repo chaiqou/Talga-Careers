@@ -7,5 +7,15 @@
 </template>
 
 <script setup>
-import JobListing from "./JobListing.vue";
+import { ref, onMounted } from "vue";
+import JobListing from "@/components/jobresults/JobListing.vue";
+import axiosInstance from "@/config/axios";
+
+const jobs = ref([]);
+
+onMounted(() => {
+  axiosInstance.get("api/posts").then((response) => {
+    console.log(response);
+  });
+});
 </script>

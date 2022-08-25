@@ -6,7 +6,20 @@
 
     <div class="mt-8 mx-auto">
       <div class="flex flex-row flex-nowrap">
-        <p class="text-sm flex-grow">Page {{ currentPage }}</p>
+        <div class="flex items-center justify-center">
+          <router-link
+            v-if="previousPage"
+            :to="{ name: 'job-results-page', query: { page: previousPage } }"
+            class="mx-3 text-sm font-semibold text-talga-blue-1"
+            >Back</router-link
+          >
+          <router-link
+            v-if="nextPage"
+            class="mx-3 text-sm font-semibold text-talga-blue-1"
+            :to="{ name: 'job-results-page', query: { page: nextPage } }"
+            >Next</router-link
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -31,6 +44,7 @@ const fetchJobs = async () => {
 
 const currentPage = computed(() => {
   const route = useRoute();
+  console.log(route.query);
   const pageString = route.query.page || "1";
   return Number.parseInt(pageString);
 });
@@ -44,14 +58,14 @@ const displayedJobs = computed(() => {
 });
 
 const previousPage = computed(() => {
-  const previousPage = currentPage - 1;
+  const prevPage = currentPage.value - 1;
   const firstPage = 1;
-  return previousPage >= firstPage ? previousPage : null;
+  return prevPage >= firstPage ? prevPage : null;
 });
 
-const nextpage = computed(() => {
-  const nextPage = currentPage + 1;
+const nextPage = computed(() => {
+  const nxPage = currentPage.value + 1;
   const lastPage = jobs.value.length / 10;
-  return nextPage <= lastPage ? nextPage : null;
+  return nxPage <= lastPage ? nxPage : null;
 });
 </script>

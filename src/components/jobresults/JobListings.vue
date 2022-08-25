@@ -3,6 +3,12 @@
     <ol>
       <JobListing v-for="job in displayedJobs" :key="job.id" :job="job" />
     </ol>
+
+    <div class="mt-8 mx-auto">
+      <div class="flex flex-row flex-nowrap">
+        <p class="text-sm flex-grow">Page {{ currentPage }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,15 +29,29 @@ const fetchJobs = async () => {
   jobs.value = response.data.data;
 };
 
-const displayedJobs = computed(() => {
+const currentPage = computed(() => {
   const route = useRoute();
-
   const pageString = route.query.page || "1";
-  const pageNumber = Number.parseInt(pageString);
+  return Number.parseInt(pageString);
+});
 
+const displayedJobs = computed(() => {
+  const pageNumber = currentPage.value;
   const firstJobIndex = (pageNumber - 1) * 10;
   const lastJobIndex = pageNumber * 10;
 
   return jobs.value.slice(firstJobIndex, lastJobIndex);
+});
+
+const previousPage = computed(() => {
+  const previousPage = currentPage - 1;
+  const firstPage = 1;
+  return previousPage >= firstPage ? previousPage : null;
+});
+
+const nextpage = computed(() => {
+  const nextPage = currentPage + 1;
+  const lastPage = jobs.value.length / 10;
+  return nextPage <= lastPage ? nextPage : null;
 });
 </script>

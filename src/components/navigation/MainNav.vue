@@ -26,11 +26,11 @@
         </nav>
 
         <div class="flex items-center h-full ml-auto">
-          <ProfileImage v-if="isLoggedIn" />
+          <ProfileImage v-if="LoginStore.isLoggedIn" />
           <ActionButton type="primary" @click="toggleProfileImage" v-else />
         </div>
       </div>
-      <SubNav v-if="isLoggedIn" />
+      <SubNav v-if="LoginStore.isLoggedIn" />
     </div>
   </header>
 </template>
@@ -40,9 +40,11 @@ import { ref, computed } from "vue";
 import ActionButton from "@/components/ui/ActionButton.vue";
 import ProfileImage from "@/components/navigation/ProfileImage.vue";
 import SubNav from "@/components/navigation/SubNav.vue";
+import { useLoginStore } from "@/stores/useLoginStore";
+
+const LoginStore = useLoginStore();
 
 const company = ref("Talga Careers");
-const isLoggedIn = ref(false);
 const menuItems = ref([
   { text: "Teams", url: "/teams" },
   { text: "Locations", url: "/locations" },
@@ -53,10 +55,10 @@ const menuItems = ref([
 ]);
 
 const headerHeightClass = computed(function () {
-  return isLoggedIn.value ? "h-32" : "h-16";
+  return LoginStore.isLoggedIn ? "h-32" : "h-16";
 });
 
 const toggleProfileImage = () => {
-  isLoggedIn.value = !isLoggedIn.value;
+  LoginStore.isLoggedIn = !LoginStore.isLoggedIn;
 };
 </script>

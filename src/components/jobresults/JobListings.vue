@@ -44,16 +44,14 @@ const fetchJobs = async () => {
 
 const currentPage = computed(() => {
   const route = useRoute();
-  console.log(route.query);
   const pageString = route.query.page || "1";
   return Number.parseInt(pageString);
 });
 
 const displayedJobs = computed(() => {
   const pageNumber = currentPage.value;
-  const firstJobIndex = (pageNumber - 1) * 10;
+  const firstJobIndex = (pageNumber - 1) * 1;
   const lastJobIndex = pageNumber * 10;
-
   return jobs.value.slice(firstJobIndex, lastJobIndex);
 });
 

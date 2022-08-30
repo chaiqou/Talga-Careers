@@ -9,7 +9,8 @@
           <ActionButton text="Clear filters" type="secondary" />
         </div>
       </div>
-      <Accordion />
+      <accordion header="Job Types"> </accordion>
+      <JobFiltersSidebarOrganizations />
     </section>
   </div>
 </template>
@@ -17,4 +18,6 @@
 <script setup>
 import ActionButton from "../ui/ActionButton.vue";
 import Accordion from "../ui/Accordion.vue";
+
+import JobFiltersSidebarOrganizations from "./JobFiltersSidebarOrganizations.vue";
 </script>

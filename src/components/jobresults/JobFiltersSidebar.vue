@@ -9,10 +9,12 @@
           <ActionButton text="Clear filters" type="secondary" />
         </div>
       </div>
+      <Accordion />
     </section>
   </div>
 </template>
 
 <script setup>
 import ActionButton from "../ui/ActionButton.vue";
+import Accordion from "../ui/Accordion.vue";
 </script>

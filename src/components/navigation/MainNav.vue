@@ -47,10 +47,10 @@ const LoginStore = useLoginStore();
 const company = ref("Talga Careers");
 const menuItems = ref([
   { text: "Teams", url: "/teams" },
-  { text: "Locations", url: "/locations" },
-  { text: "Life at Talga", url: "/life" },
-  { text: "How we hire", url: "/hire" },
-  { text: "Students", url: "/students" },
+  { text: "Locations", url: "/" },
+  { text: "Life at Talga", url: "/" },
+  { text: "How we hire", url: "/" },
+  { text: "Students", url: "/" },
   { text: "Careers", url: "/job-results" },
 ]);
 

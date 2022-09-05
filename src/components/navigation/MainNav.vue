@@ -59,6 +59,6 @@ const headerHeightClass = computed(function () {
 });
 
 const toggleProfileImage = () => {
-  LoginStore.state.isLoggedIn = !LoginStore.state.isLoggedIn;
+  LoginStore.commit("LOGIN_USER");
 };
 </script>

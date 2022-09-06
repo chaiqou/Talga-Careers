@@ -26,20 +26,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import { onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import JobListing from "@/components/jobresults/JobListing.vue";
-import axiosInstance from "@/config/axios";
 
-const jobs = ref([]);
+import { useStore } from "vuex";
+
+const store = useStore();
 
 onMounted(() => {
   fetchJobs();
 });
 
 const fetchJobs = async () => {
-  const response = await axiosInstance.get("api/jobs");
-  jobs.value = response.data.data;
+  store.dispatch("FETCH_JOBS");
 };
 
 const currentPage = computed(() => {
@@ -52,7 +52,7 @@ const displayedJobs = computed(() => {
   const pageNumber = currentPage.value;
   const firstJobIndex = (pageNumber - 1) * 1;
   const lastJobIndex = pageNumber * 10;
-  return jobs.value.slice(firstJobIndex, lastJobIndex);
+  return store.state.jobs.slice(firstJobIndex, lastJobIndex);
 });
 
 const previousPage = computed(() => {
@@ -63,7 +63,7 @@ const previousPage = computed(() => {
 
 const nextPage = computed(() => {
   const nxPage = currentPage.value + 1;
-  const lastPage = jobs.value.length / 10;
+  const lastPage = store.state.jobs.length / 10;
   return nxPage <= lastPage ? nxPage : null;
 });
 </script>

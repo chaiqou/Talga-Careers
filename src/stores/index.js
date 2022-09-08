@@ -24,6 +24,14 @@ const useStore = createStore({
       context.commit("RECIEVE_JOBS", jobListings);
     },
   },
+
+  getters: {
+    UNIQUE_ORGANIZATIONS: (state) => {
+      const uniqueOrganizations = new Set();
+      state.jobs.forEach((job) => uniqueOrganizations.add(job.company));
+      return uniqueOrganizations;
+    },
+  },
 });
 
 export default useStore;

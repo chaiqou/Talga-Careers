@@ -11,7 +11,7 @@
             <input
               v-model="selectedOrganizations"
               :value="organization"
-              v-on:change="selectOrganization"
+              v-on:change="selectedOrganization"
               type="checkbox"
               :id="organization"
               class="mr-3"
@@ -29,12 +29,16 @@ import Accordion from "@/components/ui/Accordion.vue";
 import { useStore } from "vuex";
 import { computed, ref } from "vue";
 
-const state = useStore();
+const store = useStore();
 
 const selectedOrganizations = ref([]);
 
+const selectedOrganization = () => {
+  console.log(selectedOrganizations.value);
+};
+
 const UNIQUE_ORGANIZATIONS = computed(() => {
-  console.log(state.getters.UNIQUE_ORGANIZATIONS);
-  return state.getters.UNIQUE_ORGANIZATIONS;
+  console.log(store.getters.UNIQUE_ORGANIZATIONS);
+  return store.getters.UNIQUE_ORGANIZATIONS;
 });
 </script>

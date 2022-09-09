@@ -6,6 +6,7 @@ const useStore = createStore({
     return {
       isLoggedIn: false,
       jobs: [],
+      selectedOrganizations: [],
     };
   },
 
@@ -15,6 +16,9 @@ const useStore = createStore({
     },
     RECIEVE_JOBS(state, jobs) {
       state.jobs = jobs;
+    },
+    ADD_SELECTED_ORGANIZATIONS(state, organizations) {
+      state.selectedOrganizations = organizations;
     },
   },
 
@@ -31,7 +35,11 @@ const useStore = createStore({
       state.jobs.forEach((job) => uniqueOrganizations.add(job.company));
       return uniqueOrganizations;
     },
+    FILTERED_JOBS_BY_ORGANIZATIONS: (state) => {
+      return state.jobs.filter((job) => {
+        return state.selectedOrganizations.includes(job.company);
+      });
+    },
   },
 });
-
 export default useStore;

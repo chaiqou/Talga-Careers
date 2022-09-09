@@ -36,9 +36,9 @@ const useStore = createStore({
       return uniqueOrganizations;
     },
     FILTERED_JOBS_BY_ORGANIZATIONS: (state) => {
-      return state.jobs.filter((job) => {
-        return state.selectedOrganizations.includes(job.company);
-      });
+      return state.jobs.filter((job) =>
+        state.selectedOrganizations.includes(job.company)
+      );
     },
   },
 });

@@ -36,9 +36,13 @@ const useStore = createStore({
       return uniqueOrganizations;
     },
     FILTERED_JOBS_BY_ORGANIZATIONS: (state) => {
-      return state.jobs.filter((job) =>
-        state.selectedOrganizations.includes(job.company)
-      );
+      if (state.selectedOrganizations.length === 0) {
+        return state.jobs;
+      } else {
+        return state.jobs.filter((job) =>
+          state.selectedOrganizations.includes(job.company)
+        );
+      }
     },
   },
 });

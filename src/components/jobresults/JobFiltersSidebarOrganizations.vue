@@ -11,7 +11,7 @@
             <input
               v-model="selectedOrganizations"
               :value="organization"
-              v-on:change="selectedOrganization"
+              v-on:change="selectOrganization"
               type="checkbox"
               :id="organization"
               class="mr-3"
@@ -33,12 +33,11 @@ const store = useStore();
 
 const selectedOrganizations = ref([]);
 
-const selectedOrganization = () => {
-  console.log(selectedOrganizations.value);
+const selectOrganization = () => {
+  store.commit("ADD_SELECTED_ORGANIZATIONS", selectedOrganizations.value);
 };
 
 const UNIQUE_ORGANIZATIONS = computed(() => {
-  console.log(store.getters.UNIQUE_ORGANIZATIONS);
   return store.getters.UNIQUE_ORGANIZATIONS;
 });
 </script>

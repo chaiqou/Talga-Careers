@@ -7,6 +7,7 @@ const useStore = createStore({
       isLoggedIn: false,
       jobs: [],
       selectedOrganizations: [],
+      selectedJobTypes: [],
     };
   },
 
@@ -19,6 +20,9 @@ const useStore = createStore({
     },
     ADD_SELECTED_ORGANIZATIONS(state, organizations) {
       state.selectedOrganizations = organizations;
+    },
+    ADD_SELECTED_JOB_TYPES(state, jobTypes) {
+      state.selectedJobTypes = jobTypes;
     },
   },
 
@@ -41,6 +45,20 @@ const useStore = createStore({
       } else {
         return state.jobs.filter((job) =>
           state.selectedOrganizations.includes(job.company)
+        );
+      }
+    },
+    UNIQUE_JOB_TYPES: (state) => {
+      const uniqueJobTypes = new Set();
+      state.jobs.forEach((job) => uniqueJobTypes.add(job.jobType));
+      return uniqueJobTypes;
+    },
+    FILTERED_JOBS_BY_JOB_TYPES: (state) => {
+      if (state.selectedJobTypes.length === 0) {
+        return state.jobs;
+      } else {
+        return state.jobs.filter((job) =>
+          state.selectedJobTypes.includes(job.jobType)
         );
       }
     },

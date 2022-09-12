@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col p-4 bg-white border-r border-solid border-talga-gray-1 w-96"
+    class="flex flex-col p-4 bg-white border-r border-solid border-talga-gray-1 w-[800px]"
   >
     <section class="pb-5">
       <div class="flex flex-row justify-between">
@@ -9,7 +9,7 @@
           <ActionButton text="Clear filters" type="secondary" />
         </div>
       </div>
-      <accordion header="Job Types"> </accordion>
+      <JobFiltersSidebarJobTypes />
       <JobFiltersSidebarOrganizations />
     </section>
   </div>
@@ -17,7 +17,7 @@
 
 <script setup>
 import ActionButton from "../ui/ActionButton.vue";
-import Accordion from "../ui/Accordion.vue";
 
 import JobFiltersSidebarOrganizations from "./JobFiltersSidebarOrganizations.vue";
+import JobFiltersSidebarJobTypes from "./JobFiltersSidebarJobTypes.vue";
 </script>

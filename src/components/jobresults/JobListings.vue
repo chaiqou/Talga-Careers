@@ -42,9 +42,7 @@ const fetchJobs = async () => {
   store.dispatch("FETCH_JOBS");
 };
 
-const FILTERED_JOBS_BY_ORGANIZATIONS = computed(
-  () => store.getters.FILTERED_JOBS_BY_ORGANIZATIONS
-);
+const FILTERED_JOBS = computed(() => store.getters.FILTERED_JOBS);
 
 const currentPage = computed(() => {
   const route = useRoute();
@@ -56,10 +54,7 @@ const displayedJobs = computed(() => {
   const pageNumber = currentPage.value;
   const firstJobIndex = (pageNumber - 1) * 1;
   const lastJobIndex = pageNumber * 10;
-  return FILTERED_JOBS_BY_ORGANIZATIONS.value.slice(
-    firstJobIndex,
-    lastJobIndex
-  );
+  return FILTERED_JOBS.value.slice(firstJobIndex, lastJobIndex);
 });
 
 const previousPage = computed(() => {
@@ -70,7 +65,7 @@ const previousPage = computed(() => {
 
 const nextPage = computed(() => {
   const nxPage = currentPage.value + 1;
-  const lastPage = FILTERED_JOBS_BY_ORGANIZATIONS.value.length / 10;
+  const lastPage = FILTERED_JOBS.value.length / 10;
   return nxPage <= lastPage ? nxPage : null;
 });
 </script>

@@ -39,28 +39,23 @@ const useStore = createStore({
       state.jobs.forEach((job) => uniqueOrganizations.add(job.company));
       return uniqueOrganizations;
     },
-    FILTERED_JOBS_BY_ORGANIZATIONS: (state) => {
-      if (state.selectedOrganizations.length === 0) {
-        return state.jobs;
-      } else {
-        return state.jobs.filter((job) =>
-          state.selectedOrganizations.includes(job.company)
-        );
-      }
-    },
     UNIQUE_JOB_TYPES: (state) => {
       const uniqueJobTypes = new Set();
-      state.jobs.forEach((job) => uniqueJobTypes.add(job.jobType));
+      state.jobs.forEach((job) => uniqueJobTypes.add(job.title));
       return uniqueJobTypes;
     },
-    FILTERED_JOBS_BY_JOB_TYPES: (state) => {
-      if (state.selectedJobTypes.length === 0) {
-        return state.jobs;
-      } else {
-        return state.jobs.filter((job) =>
-          state.selectedJobTypes.includes(job.jobType)
-        );
-      }
+    FILTERED_JOBS: (state) => {
+      return state.jobs
+        .filter((job) => {
+          if (state.selectedJobTypes.length === 0) return true;
+
+          return state.selectedJobTypes.includes(job.title);
+        })
+        .filter((job) => {
+          if (state.selectedOrganizations.length === 0) return true;
+
+          return state.selectedOrganizations.includes(job.company);
+        });
     },
   },
 });
